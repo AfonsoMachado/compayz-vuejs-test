@@ -1,5 +1,7 @@
 <template>
-  <Plans />
+  <div class="plans-wrapper d-flex vh-100">
+    <Plans />
+  </div>
 </template>
 
 <script lang="ts">
@@ -9,3 +11,9 @@ export default Vue.extend({
   name: 'PlansPage',
 })
 </script>
+
+<style scoped>
+.plans-wrapper {
+  background-color: #262730;
+}
+</style>

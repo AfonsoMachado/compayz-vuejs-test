@@ -1,22 +1,14 @@
-<!-- Please remove this file from your project -->
 <template>
-  <div
-    class="
-      relative
-      flex
-      items-top
-      justify-center
-      min-h-screen
-      bg-gray-100
-      sm:items-center sm:pt-0
-    "
-  >
-    teste
+  <div class="container">
+    <button type="button" class="btn btn-primary">Primary</button>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'PlansComponent',
 }
 </script>
+
+<style scoped>
+</style>
