@@ -8,21 +8,21 @@
         "contents": [
           {
             "baseQuantity": 1,
-            "service": "MEMBERZ",
+            "service": "MemberZ",
             "addOnId": null,
             "packageQuantity": null,
             "maxAddOnQuantity": 1
           },
           {
             "baseQuantity": 3,
-            "service": "USERS",
+            "service": "Usuários",
             "addOnId": null,
             "packageQuantity": null,
             "maxAddOnQuantity": 5
           },
           {
             "baseQuantity": 1,
-            "service": "DOMAIN",
+            "service": "Domínios",
             "addOnId": 1,
             "packageQuantity": 1,
             "maxAddOnQuantity": 5
@@ -36,7 +36,7 @@
         "contents": [
           {
             "baseQuantity": 1,
-            "service": "DOMAIN",
+            "service": "Domínios",
             "addOnId": 1,
             "packageQuantity": 1,
             "maxAddOnQuantity": 1

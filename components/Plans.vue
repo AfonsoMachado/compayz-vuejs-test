@@ -22,13 +22,17 @@
               w-100
             "
             :for="index"
-            @click="changePlanId(item.id, planId)"
+            @click="changePlanId(item.id, item.name)"
           >
             {{ item.name }}
           </label>
         </div>
       </div>
-      <PlanOptions v-if="[0, 1].includes(planId)" :plan-id="planId" />
+      <PlanOptions
+        v-if="[0, 1].includes(planId)"
+        :plan-name="planName"
+        :plan-id="planId"
+      />
     </div>
   </div>
 </template>
@@ -46,18 +50,16 @@ export default {
     return {
       activePlans,
       planId: -1,
+      planName: '',
       showPlan: true,
     }
   },
 
   methods: {
-    changePlanId(id) {
-      if (id > 2) {
-        this.planId = id - 1
-        this.$toast.warning('Plano indisponível')
-      } else {
-        this.planId = id - 1
-      }
+    changePlanId(id, name) {
+      id > 2 && this.$toast.warning('Plano indisponível')
+      this.planId = id - 1
+      this.planName = name
     },
   },
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="plan-options-wrapper border rounded pt-2">
     <div class="title font-weight-bold small mb-3 mx-2">
-      O plano 4D iá incluir
+      O {{ planName }} irá incluir
     </div>
 
     <div
@@ -17,7 +17,9 @@
       "
     >
       <div class="plan-opt-text">{{ item.service }}</div>
-      <div class="plan-qtd">{{ item.baseQuantity }}</div>
+      <div class="plan-qtd d-flex justify-content-center">
+        {{ item.baseQuantity }}
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +32,10 @@ export default {
     planId: {
       type: Number,
       default: -1,
+    },
+    planName: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -50,5 +56,9 @@ export default {
 
 .plan-opt {
   font-size: 12px;
+}
+
+.plan-qtd {
+  width: 50px;
 }
 </style>
