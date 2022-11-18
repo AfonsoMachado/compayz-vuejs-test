@@ -22,24 +22,43 @@
               w-100
             "
             :for="index"
+            @click="changePlanId(item.id, planId)"
           >
             {{ item.name }}
           </label>
         </div>
       </div>
+      <PlanOptions v-if="[0, 1].includes(planId)" :plan-id="planId" />
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script >
 import activePlans from '@/json/activePlans.json'
+import PlanOptions from '@/components/PlanOptions.vue'
 
 export default {
   name: 'PlansComponent',
+  components: {
+    PlanOptions,
+  },
   data() {
     return {
       activePlans,
+      planId: -1,
+      showPlan: true,
     }
+  },
+
+  methods: {
+    changePlanId(id) {
+      if (id > 2) {
+        this.planId = id - 1
+        this.$toast.warning('Plano indisponível')
+      } else {
+        this.planId = id - 1
+      }
+    },
   },
 }
 </script>
