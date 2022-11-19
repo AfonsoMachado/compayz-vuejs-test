@@ -76,9 +76,15 @@ export default {
   methods: {
     changePlanId(id) {
       this.addOnQuantity = 0
-      id > 2 && this.$toast.warning('Plano indisponível')
+      if (id > 2) {
+        this.$toast.warning('Plano indisponível')
+      }
+
       this.planId = id - 1
-      this.$refs.planOpt.addOnQuantity = 0
+
+      if (this.$refs.planOpt?.addOnQuantity !== undefined) {
+        this.$refs.planOpt.addOnQuantity = 0
+      }
     },
     changeAddOnQuantity(qtd) {
       this.addOnQuantity = +qtd
