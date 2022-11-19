@@ -9,7 +9,14 @@
           :key="index"
           class="select-plan"
         >
-          <input :id="index" type="radio" name="teste" class="d-none" />
+          <input
+            :id="index"
+            v-model="selectedPlan"
+            :value="index"
+            type="radio"
+            name="teste"
+            class="d-none"
+          />
           <label
             class="
               plan-label
@@ -30,6 +37,7 @@
       </div>
       <div v-if="[0, 1].includes(planId)" class="plans-feedback d-flex">
         <PlanOptions
+          ref="planOpt"
           :plan-id="planId"
           class="plan-options mr-2"
           @qtd-change="changeAddOnQuantity"
@@ -58,7 +66,8 @@ export default {
   data() {
     return {
       activePlans,
-      planId: -1,
+      planId: 0,
+      selectedPlan: 0,
       showPlan: true,
       addOnQuantity: 0,
     }
@@ -66,8 +75,10 @@ export default {
 
   methods: {
     changePlanId(id) {
+      this.addOnQuantity = 0
       id > 2 && this.$toast.warning('Plano indisponível')
       this.planId = id - 1
+      this.$refs.planOpt.addOnQuantity = 0
     },
     changeAddOnQuantity(qtd) {
       this.addOnQuantity = +qtd
