@@ -22,44 +22,55 @@
               w-100
             "
             :for="index"
-            @click="changePlanId(item.id, item.name)"
+            @click="changePlanId(item.id)"
           >
             {{ item.name }}
           </label>
         </div>
       </div>
-      <PlanOptions
-        v-if="[0, 1].includes(planId)"
-        :plan-name="planName"
-        :plan-id="planId"
-      />
+      <div v-if="[0, 1].includes(planId)" class="plans-feedback d-flex">
+        <PlanOptions
+          :plan-id="planId"
+          class="plan-options mr-2"
+          @qtd-change="changeAddOnQuantity"
+        />
+        <PlanPrice
+          class="plan-price"
+          :plan-id="planId"
+          :add-on-quantity="addOnQuantity"
+        />
+      </div>
     </div>
   </div>
 </template>
 
-<script >
+<script>
 import activePlans from '@/json/activePlans.json'
 import PlanOptions from '@/components/PlanOptions.vue'
+import PlanPrice from '@/components/PlanPrice.vue'
 
 export default {
   name: 'PlansComponent',
   components: {
     PlanOptions,
+    PlanPrice,
   },
   data() {
     return {
       activePlans,
       planId: -1,
-      planName: '',
       showPlan: true,
+      addOnQuantity: 0,
     }
   },
 
   methods: {
-    changePlanId(id, name) {
+    changePlanId(id) {
       id > 2 && this.$toast.warning('Plano indisponível')
       this.planId = id - 1
-      this.planName = name
+    },
+    changeAddOnQuantity(qtd) {
+      this.addOnQuantity = +qtd
     },
   },
 }
@@ -85,5 +96,17 @@ input[type='radio']:checked ~ .plan-label {
   border-color: #4e4c7c !important;
   color: #4e4c7c !important;
   transition: all 0.25s ease-in-out;
+}
+
+.plan-options {
+  width: 65%;
+}
+
+.plan-price {
+  width: 35%;
+}
+
+.plans-feedback {
+  height: 400px;
 }
 </style>
