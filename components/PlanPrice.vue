@@ -24,16 +24,27 @@
       <span class="mr-1"> {{ totalValue }} </span>
     </div>
     <div class="button-wrapper mx-1">
-      <button class="btn btn-primary p-0 w-100 py-1">Assinar Plano</button>
+      <button
+        class="btn btn-primary p-0 w-100 py-1"
+        @click="$bvModal.show('my-modal')"
+      >
+        Assinar Plano
+      </button>
+
+      <FormModal />
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script >
 import plansInfo from '@/json/plansInfo.json'
 import addOnPriceAmt from '@/json/addOnPriceAmt.json'
+import FormModal from '@/components/FormModal.vue'
 
 export default {
+  components: {
+    FormModal,
+  },
   props: {
     planId: {
       type: Number,
@@ -52,19 +63,19 @@ export default {
   },
 
   computed: {
-    totalValue: function (): string {
+    totalValue: function () {
       return this.formatCurrency(
         this.addOnQuantity * this.addOnPriceAmt +
           this.plansInfo[this.planId].planBaseAmt
       )
     },
-    totalDomain: function (): number {
+    totalDomain: function () {
       return this.addOnQuantity * this.addOnPriceAmt
     },
   },
 
   methods: {
-    formatCurrency(value: number): string {
+    formatCurrency(value) {
       return value.toLocaleString('pt-br', {
         style: 'currency',
         currency: 'BRL',
