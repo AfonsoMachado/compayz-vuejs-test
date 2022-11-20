@@ -18,14 +18,24 @@
 
       <div class="form-input">
         <label for="cpf">CPF/CNPJ <span class="required">*</span></label>
-        <input id="cpf" class="rounded" type="text" />
+        <input
+          id="cpf"
+          v-mask="['###.###.###-##', '##.###.###/####-##']"
+          class="rounded"
+          type="text"
+        />
       </div>
 
       <div class="form-input">
         <label for="phone"
           >Número de telefone <span class="required">*</span></label
         >
-        <input id="phone" class="rounded" type="text" />
+        <input
+          id="phone"
+          v-mask="['(##) ####-####', '(##) #####-####']"
+          class="rounded"
+          type="text"
+        />
       </div>
     </form>
 
