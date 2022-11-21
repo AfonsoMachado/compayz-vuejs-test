@@ -18,7 +18,6 @@ export const phoneValidator = {
  * que verifica se a sequencia de números é valida */
 export const CPForCNPJValidator = {
   isValid: (cpfcnpj: string): boolean => {
-    console.log(cpfcnpj.length)
     return cpfcnpj.length === 14 || cpfcnpj.length === 18
   },
 }

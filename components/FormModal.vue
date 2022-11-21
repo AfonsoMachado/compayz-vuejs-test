@@ -37,9 +37,21 @@ export default {
 
   methods: {
     changeForm() {
-      this.$refs.formGeneral.isFormValid()
-        ? (this.formOrder = 'second')
-        : this.$toast.warning('Preencha os dados corretamente!')
+      if (this.formOrder === 'first') {
+        this.$refs.formGeneral.isFormValid()
+          ? (this.formOrder = 'second')
+          : this.showFormWarn()
+      } else if (this.formOrder === 'second') {
+        this.$refs.formAddress.isFormValid()
+          ? (this.formOrder = 'third')
+          : this.showFormWarn()
+      } else {
+        console.log('last')
+      }
+    },
+
+    showFormWarn() {
+      this.$toast.warning('Preencha os dados corretamente!')
     },
   },
 }

@@ -4,7 +4,7 @@
       <label for="zipCode">CEP <span class="required">*</span></label>
       <input
         id="zipCode"
-        v-model="formData.address.zipCode"
+        v-model="address.zipCode"
         v-mask="'#####-###'"
         class="rounded"
         type="text"
@@ -18,7 +18,7 @@
         <label for="street"> Rua <span class="required">*</span></label>
         <input
           id="street"
-          v-model="formData.address.street"
+          v-model="address.street"
           class="rounded mr-2"
           type="text"
           placeholder="Rua"
@@ -28,7 +28,7 @@
         <label for="number"> Número <span class="required">*</span></label>
         <input
           id="number"
-          v-model="formData.address.number"
+          v-model="address.number"
           class="rounded"
           type="text"
           placeholder="Nº"
@@ -41,7 +41,7 @@
         <label for="district"> Bairro <span class="required">*</span></label>
         <input
           id="district"
-          v-model="formData.address.district"
+          v-model="address.district"
           class="rounded mr-2"
           type="text"
           placeholder="Bairro"
@@ -51,7 +51,7 @@
         <label for="city"> Cidade <span class="required">*</span></label>
         <input
           id="city"
-          v-model="formData.address.city"
+          v-model="address.city"
           class="rounded mr-2"
           type="text"
           placeholder="Cidade"
@@ -61,7 +61,7 @@
         <label for="state"> Estado <span class="required">*</span></label>
         <input
           id="state"
-          v-model="formData.address.state"
+          v-model="address.state"
           class="rounded"
           type="text"
           placeholder="Estado"
@@ -75,7 +75,7 @@
       >
       <input
         id="complement"
-        v-model="formData.address.complement"
+        v-model="address.complement"
         class="rounded"
         type="text"
         placeholder="Coloque um complemento (opcional)"
@@ -89,16 +89,14 @@ export default {
   data() {
     return {
       formOrder: 'first',
-      formData: {
-        address: {
-          zipCode: '',
-          street: '',
-          number: '',
-          district: '',
-          city: '',
-          state: '',
-          complement: '',
-        },
+      address: {
+        zipCode: '',
+        street: '',
+        number: '',
+        district: '',
+        city: '',
+        state: '',
+        complement: '',
       },
     }
   },
@@ -106,17 +104,21 @@ export default {
   methods: {
     async getAddress() {
       try {
-        const rawZipCode = this.formData.address.zipCode.replace('-', '')
+        const rawZipCode = this.address.zipCode.replace('-', '')
         const address = await this.$viacep.get(`ws/${rawZipCode}/json/`)
 
-        this.formData.address.street = address.data.logradouro
-        this.formData.address.district = address.data.bairro
-        this.formData.address.city = address.data.localidade
-        this.formData.address.complement = address.data.complemento
-        this.formData.address.state = address.data.uf
+        this.address.street = address.data.logradouro
+        this.address.district = address.data.bairro
+        this.address.city = address.data.localidade
+        this.address.complement = address.data.complemento
+        this.address.state = address.data.uf
       } catch (error) {
         console.error(error)
       }
+    },
+
+    isFormValid() {
+      return !Object.values(this.address).includes('')
     },
   },
 }
