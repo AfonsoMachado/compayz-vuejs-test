@@ -5,11 +5,11 @@
     centered
     title="Informe seus dados pessoais"
   >
-    <FormGeneral v-if="formOrder === 'first'" />
+    <FormGeneral v-if="formOrder === 'first'" ref="formGeneral" />
 
-    <FormAddress v-if="formOrder === 'second'" />
+    <FormAddress v-if="formOrder === 'second'" ref="formAddress" />
 
-    <FormCreditCard v-if="formOrder === 'third'" />
+    <FormCreditCard v-if="formOrder === 'third'" ref="formCreditCard" />
 
     <template #modal-footer="{}">
       <button
@@ -37,12 +37,9 @@ export default {
 
   methods: {
     changeForm() {
-      this.formOrder =
-        this.formOrder === 'first'
-          ? 'second'
-          : this.formOrder === 'second'
-          ? 'third'
-          : ''
+      this.$refs.formGeneral.isFormValid()
+        ? (this.formOrder = 'second')
+        : this.$toast.warning('Preencha os dados corretamente!')
     },
   },
 }
