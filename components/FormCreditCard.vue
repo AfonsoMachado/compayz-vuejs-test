@@ -40,6 +40,8 @@
       >
       <input
         id="credit-card-holder"
+        v-model="card.cpf"
+        v-mask="['###.###.###-##', '##.###.###/####-##']"
         class="rounded"
         type="text"
         placeholder="Digite o CPF ou CNPJ do titular do cartão"
@@ -77,6 +79,8 @@
 
 <script>
 import SwivelCard from './SwivelCard.vue'
+import { CPForCNPJValidator } from '@/common/validators'
+
 export default {
   components: { SwivelCard },
   data() {
@@ -86,6 +90,7 @@ export default {
         holder: '',
         expiration: '',
         cvv: '',
+        cpf: '',
       },
       cardPosition: 'front',
     }
@@ -97,6 +102,16 @@ export default {
     },
     turnCardFront() {
       this.cardPosition = 'front'
+    },
+    isFormValid() {
+      return (
+        this.card.number.length === 19 &&
+        ['4', '5'].includes(this.card.number.charAt()) &&
+        this.card.holder !== '' &&
+        this.card.expiration.length === 5 &&
+        this.card.cvv.length === 3 &&
+        CPForCNPJValidator.isValid(this.card.cpf)
+      )
     },
   },
 }

@@ -68,8 +68,10 @@ export default {
         this.$refs.formAddress.isFormValid()
           ? (this.formOrder = 'third')
           : this.showFormWarn()
-      } else {
-        console.log('last')
+      } else if (this.formOrder === 'third') {
+        this.$refs.formCreditCard.isFormValid()
+          ? console.log('correto')
+          : this.showFormWarn()
       }
     },
 
