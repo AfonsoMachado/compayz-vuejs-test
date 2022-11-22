@@ -98,10 +98,10 @@ export default {
       return this.holder === '' ? 'nome impresso' : this.holder
     },
     cardFlag() {
-      return this.number.charAt() === '4' ? 'visa' : 'mastercard'
+      return this.number.charAt(0) === '4' ? 'visa' : 'mastercard'
     },
     showCardLogo() {
-      return ['4', '5'].includes(this.number.charAt()) ? '' : 'invisible'
+      return ['4', '5'].includes(this.number.charAt(0)) ? '' : 'invisible'
     },
   },
 }

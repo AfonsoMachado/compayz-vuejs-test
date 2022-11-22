@@ -106,7 +106,7 @@ export default {
     isFormValid() {
       return (
         this.card.number.length === 19 &&
-        ['4', '5'].includes(this.card.number.charAt()) &&
+        ['4', '5'].includes(this.card.number.charAt(0)) &&
         this.card.holder !== '' &&
         this.card.expiration.length === 5 &&
         this.card.cvv.length === 3 &&

@@ -1,288 +1,73 @@
-# Desafio
+<table align="center"><tr><td align="center" width="9999">
 
-# O que preciso fazer?
+<h2>Landing Page para uma página de assinatura de planos</h2>
 
-Vamos ser práticos e diretos, se você quer trabalhar conosco siga os passos abaixo:
+<p align="center">
+  <a href="#descrição-do-projeto">Descrição do Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#computer-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#bookmark-observações-sobre-o-projeto ">Observações sobre o projeto </a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#fire-executando-o-projeto">Executando o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+</p>
 
-* Faça um "fork" desse projeto para sua conta GitHub.
-* Implemente o desafio descrito no tópico abaixo.
-* Faça um push para seu repositório com o desafio implementado.
-* Envie um email para (fernandomoraes@compayz.com) com cópia para (joaosoares@compayz.com)
-  avisando que finalizou o desafio com a url do seu fork.
+</td></tr>
+</table>
 
-# Desafio
+## Descrição do Projeto
 
-Você deverá criar 1 aplicação conforme apresentada no video
+Este projeto trata-se da construção de uma *landing page* para assinatura de planos, onde é realizada a coleta de dados de um cliente que quer assinar um determinado plano. Desenvolvido no processo seletivo de contratação da empresa [CompayZ](https://compayz.com/). Foi completamente construído utilizando o framework [NuxtJS](https://nuxtjs.org/) e seus módulos para auxílio no desenvolvimento.
 
-https://www.loom.com/share/02ca70dfb7d14798afc6d95a5dd91ad9
+## :computer: Tecnologias
 
-**Requisitos:**
+Tecnologias utilizadas para o desenvolvimento:
 
-- Listar os planos disponiveis
-- Permitir selecionar plano 4D e 5D
-- Permitir o usuario aumentar quantidade de dominios no plano 4D e 5D
-- Permitir o usuario informar dados do cartao
-    - Dados pessoais
-    - Endereço de fatura do cartao
-     - Consultar CEP usando API : https://viacep.com.br/
-    - Dados do cartao
+- [Bootstrap 4](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+- [BootstrapVue](https://bootstrap-vue.org/)
+- [NuxtJS](https://nuxtjs.org/)
+- [nuxt/axios](https://axios.nuxtjs.org/)
+- [Node.js](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
+- [Vue.js 2](https://v2.vuejs.org/)
+- [Vue-Sweetalert2](https://avil13.github.io/vue-sweetalert2/)
+- [vue-the-mask](https://vuejs-tips.github.io/vue-the-mask/)
+- [Vue Toastification](https://vue-toastification.maronato.dev/)
 
-### Tecnologias
+## :bookmark: Observações sobre o projeto
 
-- Escolha umas das opções abaixo para implementar sua solução. Não se preocupe com autenticação ou seguir fielmente as cores.
+### Arquivos JSON
 
-#### FRONT-END
+Para auxiliar no desenvolvimento, foram utilizados três arquivos *json* que são consumidos ao longo do projeto, contendo os planos ativos atualmente e dados pertinentes aos planos ativos
 
-* Vue.js 2 com Nuxt
+### Plugins
 
-Utilizar Bootstrap (http://getbootstrap.com/)
+Foram configurados dois *plugins* nuxt para o projeto, o primeiro deles é referente à configuração do [vue-the-mask](https://vuejs-tips.github.io/vue-the-mask/), utilizado para afetuar mascaras de *inputs* para melhor utlização dos formulários para o usuário. Um segundo plugin usado, foi a criação de uma instância do *axios* exclusiva para o uso da api [ViaCEP](https://viacep.com.br/), usada para consulta de CEPs do Brasil.
 
-**Recomendações gerais:**
+### Validações
 
-* Não utilize frameworks que não foram indicados
+Neste projeto foram incluidas algumas validações simples de formulários, cujas funções podem ser encontradas dentro da pasta *common*.
 
-### Arquitetura e documentação
+### Demais observações
 
-No arquivo README do projeto explique o funcionamento e a arquitetura da solução adotada na sua implementação. Descreva também os passos para executar corretamente seu projeto.
+Foi seguido todo padrão utilizado pelo Nuxt e Vue, mantendo os componentes usados na pasta *components* bem como as páginas nas pasta *pages*. Sempre que possível realizando a criação de novos componentes para a simplificação do código.
 
-### Avaliação
+## :fire: Executando o projeto
 
-Entre os critérios de avaliação estão:
+### Requisitos Necessários
 
-* Atenção aos detalhes
-* Facilidade de configuração do projeto
-* Performance
-* Código limpo e organização
-* Documentação de código
-* Documentação do projeto (readme)
-* Arquitetura
-* Boas práticas de desenvolvimento
-* Design Patterns
-* Testes unitários
+- [Node.js](https://nodejs.org/en/) (Foi utilizada a versão 16.17.0 durante o desenvolvimento)
+- [npm](https://www.npmjs.com/) (Foi utilizada a versão 8.15.0 durante o desenvolvimento)
 
-## JSONs de exemplo a serem utilizados na aplicação
-
-### JSON de Planos disponiveis
-
-##### Metadata
-
-| Nome da Coluna | Observacao                                                |
-|----------------|-----------------------------------------------------------|
-| id             | Identificador do Plano                                    |
-| seqno          | Sequencia que deve ser apresentado o plano para o usuario |
-| name           | Nome                                                      |
-
-##### Example
-
-```json
-{
-  "data": {
-    "activePlans": [
-      {
-        "id": 1,
-        "seqno": 10,
-        "name": "Plano 4D"
-      },
-      {
-        "id": 2,
-        "seqno": 20,
-        "name": "Plano 5D"
-      },
-      {
-        "id": 3,
-        "seqno": 30,
-        "name": "Plano 6D"
-      },
-      {
-        "id": 4,
-        "seqno": 40,
-        "name": "Plano 7D"
-      },
-      {
-        "id": 5,
-        "seqno": 50,
-        "name": "SPACE"
-      }
-    ]
-  }
-}
-
-```
-
-### JSON dados de um plano
-
-#### Response PlanId = 1
-
-##### Metadate
-
-###### PlanInfo
-
-| Nome da Coluna | Observacao             |
-|----------------|------------------------|
-| id             | Identificador do Plano |
-| name           | Nome do Plano          |
-| planBaseAmt    | Valor do Plano Base    |
-| contents       | Conteudo do Plano      |
-
-###### Contents
-
-| Nome da Coluna   | Observacao                                                                                                                 |
-|------------------|----------------------------------------------------------------------------------------------------------------------------|
-| baseQuantity     | Valor inicial contido no plano                                                                                             |
-| Service          | Nome do Serviço                                                                                                            |
-| addOnId          | Quando presente indica que o usuario pode adicionar mais recursos daquele serviço. Serve como parametro para obter o preço |
-| packageQuantity  | Indica de quantos em quantos o usuario pode adicionar recurso, exemplo: comprar pacote de SMS de 500 em 500.               |
-| maxAddOnQuantity | Indica quantos pacotes extras o usuário pode adquirir no máximo.                                                           |
-
-##### Example
-
-````json
-{
-  "data": {
-    "planInfo": {
-      "id": 1,
-      "name": "Plano 4D",
-      "planBaseAmt": 284,
-      "contents": [
-        {
-          "baseQuantity": 1,
-          "service": "MEMBERZ",
-          "addOnId": null,
-          "packageQuantity": null,
-          "maxAddOnQuantity": 1
-        },
-        {
-          "baseQuantity": 3,
-          "service": "USERS",
-          "addOnId": null,
-          "packageQuantity": null,
-          "maxAddOnQuantity": 5
-        },
-        {
-          "baseQuantity": 1,
-          "service": "DOMAIN",
-          "addOnId": 1,
-          "packageQuantity": 1,
-          "maxAddOnQuantity": 5
-        }
-      ]
-    }
-  }
-}
-
-````
-
-#### Response PlanId = 2
-
-````json
-{
-  "data": {
-    "planInfo": {
-      "id": 2,
-      "name": "Plano 5D",
-      "planBaseAmt": 341,
-      "contents": [
-        {
-          "baseQuantity": 1,
-          "service": "DOMAIN",
-          "addOnId": 1,
-          "packageQuantity": 1,
-          "maxAddOnQuantity": 1
-        }
-      ]
-    }
-  }
-}
-````
-
-### JSON para Obter valor adicional de um recurso conforme demonstrado no video
-
-#### Response
-
-##### Metadata
-
-| Nome da Coluna | Observacao                    |
-|----------------|-------------------------------|
-| addOnPriceAmt  | Valor adicional de X dominios |
-
-##### Example
-
-````json
-
-{
-  "data": {
-    "addOnPriceAmt": 70
-  }
-}
-
-````
-
-# compayz-vuejs-test
-
-## Build Setup
+**Instalação e execução**
 
 ```bash
-# install dependencies
+# Instale todas as dependências necessárias:
 $ npm install
 
-# serve with hot reload at localhost:3000
+# Para iniciar o servidor de desenvolvimento do Nuxt:
 $ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+- Após isso, o projeto pode ser acessado a partir da URL http://localhost:3000.
 
-## Special Directories
+---
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
-
+<p align="center">Feito com 💜 por <strong><a href="https://www.linkedin.com/in/AfonsoMachado/">Afonso Machado</a> 🥰 </strong> </p>
