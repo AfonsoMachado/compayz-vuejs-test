@@ -78,6 +78,11 @@ export default {
   height: max-content;
 }
 
+.plan-opt-text,
+.plan-qtd {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .slider {
   height: 2px;
   width: 50px;

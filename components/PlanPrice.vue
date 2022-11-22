@@ -100,6 +100,10 @@ export default {
   font-size: 12px;
 }
 
+.choices {
+  padding-bottom: 30px !important;
+}
+
 .amount {
   background-color: #44475c;
 }
