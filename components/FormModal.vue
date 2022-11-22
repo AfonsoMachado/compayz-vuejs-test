@@ -33,7 +33,7 @@
         class="btn btn-primary form-btn p-0 w-100 py-1"
         @click="changeForm"
       >
-        Próximo
+        {{ formOrder === 'third' ? `Assinar plano (${amount})` : 'Próximo' }}
       </button>
     </template>
   </b-modal>
@@ -46,6 +46,12 @@ import FormGeneral from './FormGeneral.vue'
 
 export default {
   components: { FormGeneral, FormCreditCard, FormAddress },
+  props: {
+    amount: {
+      type: String,
+      default: 'R$ 0,00',
+    },
+  },
   data() {
     return {
       formOrder: 'first',

@@ -42,11 +42,7 @@
           class="plan-options mr-2"
           @qtd-change="changeAddOnQuantity"
         />
-        <PlanPrice
-          class="plan-price"
-          :plan-id="planId"
-          :add-on-quantity="addOnQuantity"
-        />
+        <PlanPrice ref="planPrice" class="plan-price" :plan-id="planId" />
       </div>
     </div>
   </div>

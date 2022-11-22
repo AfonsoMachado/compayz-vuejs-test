@@ -31,7 +31,7 @@
         Assinar Plano
       </button>
 
-      <FormModal />
+      <FormModal :amount="totalValue" />
     </div>
   </div>
 </template>
