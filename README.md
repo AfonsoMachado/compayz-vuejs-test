@@ -54,8 +54,8 @@ Foi seguido todo padrão utilizado pelo Nuxt e Vue, mantendo os componentes usad
 
 ### Requisitos Necessários
 
-- [Node.js](https://nodejs.org/en/) (Foi utilizada a versão 16.17.0 durante o desenvolvimento)
-- [npm](https://www.npmjs.com/) (Foi utilizada a versão 8.15.0 durante o desenvolvimento)
+- [Node.js v16.17.0](https://nodejs.org/download/release/v16.17.0/)
+- [npm v8.15.0](https://www.npmjs.com/) (Instalado juntamente com o Node.js v16.17.0)
 
 **Instalação e execução**
 
