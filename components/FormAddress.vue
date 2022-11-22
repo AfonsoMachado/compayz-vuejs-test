@@ -112,7 +112,8 @@ export default {
         const rawZipCode = this.address.zipCode.replace('-', '')
         const address = await this.$viacep.get(`ws/${rawZipCode}/json/`)
 
-        if (!this.address.city) this.$toast.warning('Endereço não encontrado')
+        if (!address.data.localidade)
+          this.$toast.warning('Endereço não encontrado')
 
         this.address.street = address.data.logradouro
         this.address.district = address.data.bairro

@@ -1,15 +1,32 @@
 <template>
-  <b-modal
-    id="my-modal"
-    class="form-modal"
-    centered
-    title="Informe seus dados pessoais"
-  >
-    <FormGeneral v-if="formOrder === 'first'" ref="formGeneral" />
+  <b-modal id="my-modal" class="form-modal" centered>
+    <template #modal-header="{ close }">
+      <div
+        class="back-button"
+        :class="formOrder === 'first' ? 'invisible' : ''"
+        @click="backForm"
+      >
+        <img src="../assets/svgs/left-arrow.svg" alt="" />
+      </div>
+      <h6 class="align-self-center m-0 text-white">
+        Informe seus dados pessoais
+      </h6>
+      <div class="close-button" @click="close()">
+        <img src="../assets/svgs/close.svg" alt="" />
+      </div>
+    </template>
 
-    <FormAddress v-if="formOrder === 'second'" ref="formAddress" />
+    <keep-alive>
+      <FormGeneral v-if="formOrder === 'first'" ref="formGeneral" />
+    </keep-alive>
 
-    <FormCreditCard v-if="formOrder === 'third'" ref="formCreditCard" />
+    <keep-alive>
+      <FormAddress v-if="formOrder === 'second'" ref="formAddress" />
+    </keep-alive>
+
+    <keep-alive>
+      <FormCreditCard v-if="formOrder === 'third'" ref="formCreditCard" />
+    </keep-alive>
 
     <template #modal-footer="{}">
       <button
@@ -53,11 +70,28 @@ export default {
     showFormWarn() {
       this.$toast.warning('Preencha os dados corretamente!')
     },
+
+    backForm() {
+      this.formOrder = this.formOrder === 'second' ? 'first' : 'second'
+    },
   },
 }
 </script>
 
 <style >
+.back-button img,
+.close-button img {
+  cursor: pointer;
+  width: 20px;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.back-button:hover img,
+.close-button:hover img {
+  opacity: 0.5;
+}
+
 .modal-content {
   background-color: #2b2d3b;
 }
