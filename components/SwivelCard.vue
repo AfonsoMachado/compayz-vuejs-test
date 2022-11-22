@@ -28,22 +28,18 @@
           </div>
           <div class="card-bot w-100 d-flex justify-content-end">
             <img
-              alt="Logo mastercadr"
-              src="../assets/images/ic-mastercard.png"
+              :src="require(`../assets/images/ic-${cardFlag}.png`)"
+              :class="showCardLogo"
               class="card-logo"
             />
           </div>
         </div>
         <div class="swivel-card-content-front d-flex justify-content-between">
           <div class="card-top d-flex w-100 justify-content-between">
+            <img src="../assets/images/ic-chip.png" class="card-chip" />
             <img
-              alt="Chip cartão"
-              src="../assets/images/ic-chip.png"
-              class="card-chip"
-            />
-            <img
-              alt="Logo mastercadr"
-              src="../assets/images/ic-mastercard.png"
+              :src="require(`../assets/images/ic-${cardFlag}.png`)"
+              :class="showCardLogo"
               class="card-logo"
             />
           </div>
@@ -100,6 +96,12 @@ export default {
     },
     cardHolder() {
       return this.holder === '' ? 'nome impresso' : this.holder
+    },
+    cardFlag() {
+      return this.number.charAt() === '4' ? 'mastercard' : 'visa'
+    },
+    showCardLogo() {
+      return ['4', '5'].includes(this.number.charAt()) ? '' : 'invisible'
     },
   },
 }
@@ -178,6 +180,7 @@ export default {
 
 .swivel-card-content-front .card-chip {
   width: 50px;
+  height: 38px;
 }
 
 .card-number {
@@ -194,8 +197,7 @@ export default {
 }
 
 .card-logo {
-  width: 50px;
-  height: auto;
+  width: 60px;
   filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.4));
 }
 
