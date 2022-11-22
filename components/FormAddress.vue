@@ -103,17 +103,27 @@ export default {
 
   methods: {
     async getAddress() {
+      this.$swal({
+        text: 'Carregando',
+        didOpen: () => this.$swal.showLoading(),
+        allowOutsideClick: () => this.$swal.isLoading(),
+      })
       try {
         const rawZipCode = this.address.zipCode.replace('-', '')
         const address = await this.$viacep.get(`ws/${rawZipCode}/json/`)
+
+        if (!this.address.city) this.$toast.warning('Endereço não encontrado')
 
         this.address.street = address.data.logradouro
         this.address.district = address.data.bairro
         this.address.city = address.data.localidade
         this.address.complement = address.data.complemento
         this.address.state = address.data.uf
+        this.$swal.close()
       } catch (error) {
         console.error(error)
+        this.$toast.error('Erro ao buscar o CEP')
+        this.$swal.close()
       }
     },
 
