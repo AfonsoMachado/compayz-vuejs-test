@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="my-modal" class="form-modal" centered>
+  <b-modal id="my-modal" class="form-modal" centered @hidden="resetModal">
     <template #modal-header="{ close }">
       <div
         class="back-button"
@@ -79,6 +79,10 @@ export default {
 
     backForm() {
       this.formOrder = this.formOrder === 'second' ? 'first' : 'second'
+    },
+
+    resetModal() {
+      this.formOrder = 'first'
     },
   },
 }
