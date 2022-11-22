@@ -28,10 +28,10 @@
       <FormCreditCard v-if="formOrder === 'third'" ref="formCreditCard" />
     </keep-alive>
 
-    <template #modal-footer="{}">
+    <template #modal-footer="{ ok }">
       <button
         class="btn btn-primary form-btn p-0 w-100 py-1"
-        @click="changeForm"
+        @click="changeForm(ok)"
       >
         {{ formOrder === 'third' ? `Assinar plano (${amount})` : 'Próximo' }}
       </button>
@@ -59,7 +59,7 @@ export default {
   },
 
   methods: {
-    changeForm() {
+    changeForm(ok) {
       if (this.formOrder === 'first') {
         this.$refs.formGeneral.isFormValid()
           ? (this.formOrder = 'second')
@@ -70,9 +70,17 @@ export default {
           : this.showFormWarn()
       } else if (this.formOrder === 'third') {
         this.$refs.formCreditCard.isFormValid()
-          ? console.log('correto')
+          ? this.finishSubscription(ok)
           : this.showFormWarn()
       }
+    },
+
+    finishSubscription(ok) {
+      this.$swal.fire({
+        text: 'Assinatura realizada com sucesso!',
+        icon: 'success',
+      })
+      ok()
     },
 
     showFormWarn() {
