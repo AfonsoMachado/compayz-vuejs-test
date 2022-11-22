@@ -5,8 +5,9 @@
 <p align="center">
   <a href="#descrição-do-projeto">Descrição do Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#computer-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#bookmark-observações-sobre-o-projeto ">Observações sobre o projeto </a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#bookmark-observações-sobre-o-projeto ">Observações sobre o projeto </a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#fire-executando-o-projeto">Executando o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#up-deploy">Deploy</a>&nbsp;&nbsp;&nbsp;
 </p>
 
 </td></tr>
@@ -67,6 +68,10 @@ $ npm run dev
 ```
 
 - Após isso, o projeto pode ser acessado a partir da URL http://localhost:3000.
+
+## :up: Deploy
+
+Com a finalidade de realizar testes, foi realizado o deploy deste projeto usando o <a target="_blank" href="https://vercel.com/">Vercel</a>. O mesmo pode ser acessado através da URL: https://compayz-vuejs-test.vercel.app/.
 
 ---
 
